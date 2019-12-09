@@ -1,0 +1,101 @@
+[
+    {
+        "id": "5a7933ce.d3db3c",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5faacdcf.420054",
+        "type": "http in",
+        "z": "5a7933ce.d3db3c",
+        "name": "",
+        "url": "/pin7",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "8d99f128.970f2"
+            ]
+        ]
+    },
+    {
+        "id": "fb96c86d.b05718",
+        "type": "rpi-gpio in",
+        "z": "5a7933ce.d3db3c",
+        "name": "",
+        "pin": "7",
+        "intype": "down",
+        "debounce": "25",
+        "read": false,
+        "x": 180,
+        "y": 360,
+        "wires": [
+            [
+                "5adf50e9.fb4cd"
+            ]
+        ]
+    },
+    {
+        "id": "5adf50e9.fb4cd",
+        "type": "function",
+        "z": "5a7933ce.d3db3c",
+        "name": "set",
+        "func": "global.set(\"GPIO\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 340,
+        "wires": [
+            [
+                "b87d8b9f.b49698"
+            ]
+        ]
+    },
+    {
+        "id": "8d99f128.970f2",
+        "type": "function",
+        "z": "5a7933ce.d3db3c",
+        "name": "get",
+        "func": "msg.payload=global.get(\"GPIO\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "b87d8b9f.b49698",
+                "1f3bd667.5231aa"
+            ]
+        ]
+    },
+    {
+        "id": "b87d8b9f.b49698",
+        "type": "debug",
+        "z": "5a7933ce.d3db3c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 550,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "1f3bd667.5231aa",
+        "type": "http response",
+        "z": "5a7933ce.d3db3c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 620,
+        "y": 180,
+        "wires": []
+    }
+]
